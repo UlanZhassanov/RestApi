@@ -14,7 +14,7 @@ public class Event {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "file_id", referencedColumnName = "id")
     private File file;
 
@@ -55,8 +55,8 @@ public class Event {
     public String toString() {
         return "Event{" +
                 "id=" + id +
-                ", user=" + user +
-                ", file=" + file +
+                ", user=" + user.getName() +
+                ", file=" + file.getName() +
                 '}';
     }
 }
