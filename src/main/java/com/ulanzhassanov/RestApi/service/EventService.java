@@ -16,6 +16,10 @@ public class EventService {
         return eventRepository.getById(id);
     }
 
+    public Event getEventByFileId(Integer id) {
+        return eventRepository.getByFileId(id);
+    }
+
     public List<Event> getAllEvents() {
         return eventRepository.getAll();
     }

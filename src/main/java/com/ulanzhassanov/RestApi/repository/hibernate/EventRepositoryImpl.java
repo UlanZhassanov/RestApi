@@ -6,6 +6,7 @@ import com.ulanzhassanov.RestApi.repository.EventRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class EventRepositoryImpl implements EventRepository {
@@ -20,6 +21,10 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
     public List<Event> getAll() {
         return entityManager.createQuery("FROM Event", Event.class).getResultList();
+    }
+
+    public Event getByFileId(Integer id) {
+        return entityManager.createQuery("FROM Event e WHERE e.file.id = :fileId", Event.class).setParameter("fileId", id).getSingleResult();
     }
 
     @Override
